@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0px;
+            overflow: hidden;
+        }
+        #labels {
+            width: 150px;
+            height: 100%;
+            background: lightgray;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            border-left: 2px solid black;
+        }
+        #labels > button {
+            height: 40px;
+            width: 100%;
+        }
+        #control {
+            width: 200px;
+            height: 500px;
+            background: lightgray;
+            position: absolute;
+            left: 200px;
+            bottom: 0px;
+            border: 2px solid black;
+        }
+        #layers {
+            width: 200px;
+            height: 500px;
+            background: gray;
+            position: absolute;
+            left: 0px;
+            bottom: 0px;
+            border: 2px solid black;
+        }
+        .slayer {
+            background: gold;
+            height: '30px';
+            width: 100%;
+            height: 40px;
+            cursor: pointer;
+            border: 1px solid black;
+            text-align: center;
+            line-height: 40px;
+            user-select: none;
+        }
+        .nslayer {
+            background: lightgray;
+            height: '30px';
+            width: 100%;
+            height: 40px;
+            cursor: pointer;
+            border: 1px solid black;
+            text-align: center;
+            line-height: 40px;
+            user-select: none;
+        }
+        #layers > #bottom {
+            height: 20px;
+            background: lightgray;
+            width: 100%;
+            border-top: 2px solid black;
+            position: absolute;
+            bottom: 0px;
+        }
+        #layers > #bottom > #down {
+            width: 20px;
+            height: 20px;
+            border: 1px solid black;
+            cursor: pointer;
+            float: right;
+            bottom: 0px;
+            user-select: none;
+        }
+        #layers > #bottom > #up {
+            width: 20px;
+            height: 20px;
+            border: 1px solid black;
+            cursor: pointer;
+            float: right;
+            bottom: 0px;
+            user-select: none;
+        }
+    </style>
+</head>
+<body>
+
+    <button onclick='importSheet()'>Import Sheet</button>
+    <button onclick='importImage()'>Import Image</button>
+    <button onclick='importText()'>Import Text</button>
+    <div id='labels'></div>
+    <div id='control'>
+
+        <input min='0' max='200' value='100' id='s_scale'>
+        <input min='0' max='0' value='0' id='s_x'>
+        <input min='0' max='0' value='0' id='s_y'>
+
+    </div>
+    <div id='layers'>
+        <div id='lay'></div>
+        <div id='bottom'> 
+            <div id='down' onclick='moveLayer("down")'>V</div>
+            <div id='up' onclick='moveLayer("up")'>^</div>
+        </div>
+    </div>
+    <center><canvas id='card'></canvas></center>
+    
+    <script src="main.js"></script>
+</body>
+</html>
