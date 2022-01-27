@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        body {
+            margin: 0px;
+            overflow: hidden;
+        }
+        #labels {
+            width: 150px;
+            height: 100%;
+            background: lightgray;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            border-left: 2px solid black;
+        }
+        #switch {
+            width: 150px;
+            height: 100%;
+            background: lightgray;
+            position: absolute;
+            right: 150px;
+            top: 0px;
+            border-left: 3px solid black;
+            border-right: 2px solid black;
+        }
+        #labels > button {
+            height: 40px;
+            width: 100%;
+        }
+        #switch > button {
+            height: 40px;
+            width: 100%;
+        }
+        #control {
+            display: none;
+            width: 200px;
+            height: 500px;
+            background: lightgray;
+            position: absolute;
+            left: 200px;
+            bottom: 0px;
+            border: 2px solid black;
+        }
+        #layers {
+            width: 200px;
+            height: 500px;
+            background: gray;
+            position: absolute;
+            left: 0px;
+            bottom: 0px;
+            border: 2px solid black;
+        }
+        .slayer {
+            background: gold;
+            height: '30px';
+            width: 100%;
+            height: 40px;
+            cursor: pointer;
+            border: 1px solid black;
+            text-align: center;
+            line-height: 40px;
+            user-select: none;
+        }
+        .nslayer {
+            background: lightgray;
+            height: '30px';
+            width: 100%;
+            height: 40px;
+            cursor: pointer;
+            border: 1px solid black;
+            text-align: center;
+            line-height: 40px;
+            user-select: none;
+        }
+        #layers > #bottom {
+            height: 20px;
+            background: lightgray;
+            width: 100%;
+            border-top: 2px solid black;
+            position: absolute;
+            bottom: 0px;
+        }
+        #layers > #bottom > div {
+            width: 20px;
+            height: 20px;
+            border: 1px solid black;
+            cursor: pointer;
+            float: right;
+            bottom: 0px;
+            user-select: none;
+            text-align: center;
+        }
+        #lay {
+            overflow-y: auto;
+            overflow-x: hidden;
+            max-height: 500px;
+        }
+        #final {
+            position: absolute;
+            left: 0px;
+            top: 20px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <button onclick='importSheet()'>Import Sheet</button>
+    <button onclick='importImage()'>Import Image</button>
+    <button onclick='importText()'>Import Text</button>
+    <button onclick='importLayout()'>Layout</button>
+    <div id='labels'></div>
+    <div id='switch'></div>
+    <div id='control'>
+        <table id='tableAll'>
+            <tr>
+                <td>Scroll</td>
+                <td><input value='1' id='s_scroll'></td>
+            </tr>
+            <tr>
+                <td>Scale</td>
+                <td><input value='100' id='s_scale'></td>
+            </tr>
+            <tr>
+                <td>X</td>
+                <td><input value='0' id='s_x'></td>
+            </tr>
+            <tr>
+                <td>Y</td>
+                <td><input value='0' id='s_y'></td>
+            </tr>
+        </table>
+        <table id='tableText'>
+            <tr>
+                <td>Font-Family</td>
+                <td><input value='Arial' id='s_fontf'></td>
+            </tr>
+            <tr>
+                <td>Font-Style</td>
+                <td><input value='normal' id='s_fontst'></td>
+            </tr>
+            <tr>
+                <td>Word Wrap</td>
+                <td><input value='false' id='s_fontww'></td>
+            </tr>
+            <tr>
+                <td>Font-Size</td>
+                <td><input value='20' id='s_fonts'></td>
+            </tr>
+            <tr>
+                <td>Font-Color</td>
+                <td><input value='Black' id='s_fontc'></td>
+            </tr>
+            <tr>
+                <td>Line-Height</td>
+                <td><input value='20' id='s_fontlh'></td>
+            </tr>
+        </table>
+    </div>
+    <div id='layers'>
+        <div id='lay'></div>
+        <div id='bottom'> 
+            <div id='down' onclick='moveLayer("down")'>v</div>
+            <div id='up' onclick='moveLayer("up")'>^</div>
+            <div onclick='save()'>S</div>
+            <div onclick='paste()'>P</div>
+            <div onclick='deleteLayer()'>D</div>
+            <div onclick='copyFormat()'>C</div>
+            <div onclick='pasteFormat()'>V</div>
+        </div>
+    </div>
+    <center><canvas id='card'></canvas></center>
+
+    <canvas id='final'></canvas>
+    
+    <script src="main.js"></script>
+</body>
+</html>
