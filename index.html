@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Designer</title>
+    <link rel="icon" type="image/x-icon" href="C:\Users\isakt\OneDrive\Desktop\Card Editor\victory.ico">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <canvas id='card'></canvas>
+    <div id='labels'></div>
+    <div id='switch'></div>
+    <div id='control'>
+        <div id='controlSettings'>
+            <table id='tableAll'>
+                <tr>
+                    <td>Scroll</td>
+                    <td><input class='controlInput' value='1' id='s_scroll'></td>
+                </tr>
+                <tr>
+                    <td>Scale</td>
+                    <td><input class='controlInput' value='100' id='s_scale'></td>
+                </tr>
+                <tr>
+                    <td>X</td>
+                    <td><input class='controlInput' value='0' id='s_x'></td>
+                </tr>
+                <tr>
+                    <td>Y</td>
+                    <td><input class='controlInput' value='0' id='s_y'></td>
+                </tr>
+            </table>
+            <table id='tableImage'>
+                <tr>
+                    <td>SRC</td>
+                    <td><input class='controlInput' id='s_src'></td>
+                </tr>
+            </table>
+            <table id='tableText'>
+                <tr>
+                    <td>Font-Size</td>
+                    <td><input class='controlInput' value='20' id='s_fonts'></td>
+                </tr>
+                <tr>
+                    <td>Font-Color</td>
+                    <td><input type='color' class='controlInput' value='#000000' id='s_fontc'></td>
+                </tr>
+                <tr>
+                    <td>Font-Family</td>
+                    <td><input class='controlInput' value='Arial' id='s_fontf'></td>
+                </tr>
+                <tr>
+                    <td>Word Wrap</td>
+                    <td><input class='controlInput' value='false' id='s_fontww'></td>
+                </tr>
+                <tr>
+                    <td>Line-Height</td>
+                    <td><input class='controlInput' value='20' id='s_fontlh'></td>
+                </tr>
+                <tr>
+                    <td>Italic</td>
+                    <td><input class='controlInput'  value='false' type='checkbox' id='s_fonti'></td>
+                </tr>
+                <tr>
+                    <td>Bold</td>
+                    <td><input class='controlInput'  value='false' type='checkbox' id='s_fontb'></td>
+                </tr>
+                <tr>
+                    <td>Center Text</td>
+                    <td><input class='controlInput'  value='false' type='checkbox' id='s_fontta'></td>
+                </tr>
+            </table>
+            
+            <div id='goDown'>
+                <div class='bottomRowSettings'>
+                    <input id='bottomRowSettings' type='checkbox' onclick="switchCustomNumber(1)"><div id='bottomRowSettings' >1</div>
+                    <input id='bottomRowSettings' type='checkbox' onclick="switchCustomNumber(2)"><div id='bottomRowSettings' >2</div>
+                    <input id='bottomRowSettings' type='checkbox' onclick="switchCustomNumber(3)"><div id='bottomRowSettings' >3</div>
+                    <input id='bottomRowSettings' type='checkbox' onclick="switchCustomNumber(4)"><div id='bottomRowSettings' >4</div>
+                    <input id='bottomRowSettings' type='checkbox' onclick="switchCustomNumber(5)"><div id='bottomRowSettings' >5</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id='layers'>
+        <div id='lay'></div>
+    </div>
+
+    <canvas id='final'></canvas>
+
+    <div id='bottomBar'>
+        <div id='normalBB'>
+            <button id='askLayoutButton' onclick='askLayout()'>Layout</button>
+            <button id='importButton' onclick='importImage()'>Import Image</button>
+            <button id='importButton' onclick='importText()'>Import Text</button>
+            <button id='importButton' onclick='importSheet()'>Import Sheet</button>
+            <table id='canvasWH'>
+                <tr>
+                    <td>Canvas Width:</td>
+                    <td><input style='width: 50px;' id='canvas_width' value='1275'></td>
+                    <td>Canvas Scale:</td>
+                    <td><input style='width: 50px;' id='canvas_scale' value='100'></td>
+                </tr>
+                <tr>
+                    <td>Canvas Height:</td>
+                    <td><input style='width: 50px;' id='canvas_height' value='655'></td>
+                </tr>
+            </table>
+            
+            <div id='buttomLayerSettings'>
+                <div id="showOnLayer">
+                    <div id='down' class='bottomButton' onclick='moveLayer("down")'>↓</div>
+                    <div id='up' class='bottomButton' onclick='moveLayer("up")'>↑</div>
+                    <div class='bottomButton' onclick='deleteLayer()'>Delete</div>
+                    <div class='bottomButton' onclick='copyFormat()'>Copy Layers Format</div>
+                    <div class='bottomButton' onclick='pasteFormat()'>Paste Layers Format</div>
+                </div>
+                <div class='bottomButton' onclick='save()'>Save Layers</div>
+                <div class='bottomButton' onclick='paste()'>Paste Layers</div>
+            </div>
+        </div>
+        <div id='layoutBB'>
+            <button onclick='closeLayout()'>Close</button>
+            <div id='leave_percent'>Not Done</div>
+        </div>
+    </div>
+
+    <div id='layoutSettings'>
+        <div id='layoutSettingsTopRow'>
+            <center><h2>Layout Settings</h2></center>
+        </div>
+        <div onclick='CloseLayoutSettings()' id='closeLayout'>X</div>
+        <div id='layoutSettingsBody'>
+            <table>
+                <tr>
+                    <td>Pull From</td>
+                    <td><select id='canvasFinalCards'></select></td>
+                </tr>
+                <tr>
+                    <td>How Many Images Across?</td>
+                    <td><input id='canvasWidthFinal' onkeypress="this.style.width = ((this.value.length + 1) * 8) + 'px';" style='min-width: 20px; width: 20px; max-width: 100px' placeholder='10' ></td>
+                </tr>
+            </table>
+            <h2 onclick='importLayout()' id='createCanvas'>Create Canvas</h2>
+        </div>
+    </div>
+    
+    <div id='allImages'></div>
+
+    <script src="main.js"></script>
+    <script>
+        //Script For Simple Tasks within This HTML file
+
+        function CloseLayoutSettings() {
+            document.getElementById('layoutSettings').style.display = 'none';
+        }
+
+
+    </script>
+</body>
+</html>
