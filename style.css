@@ -1,0 +1,592 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: #6bd2f6;
+}
+#card {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 49px;
+    margin: auto;
+    border: 3px solid black;
+}
+#labels {
+    position: fixed;
+    right: 0px;
+    top: 0px;
+
+    height: calc(100% - 50px);
+    width: 150px;
+
+
+    border-left: 2px solid black;
+}
+#labels > #head {
+    width: 100%;
+    height: 30px;
+    margin: auto;
+
+    background:rgb(146, 223, 123);
+
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+}
+#labels > #head:hover {
+    background:rgb(110, 182, 88);
+    transition: background 800ms linear;
+}
+#labels > #body {
+    
+    overflow-y: auto;
+    overflow-x: hidden;
+    direction:rtl; 
+
+    height: calc(100% - 30px);
+
+    width: 100%;
+
+    background: lightgray;
+}
+
+#importMenu {
+    width: 150px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 100%;
+    background: lightgray;
+    position: absolute;
+    right: 150px;
+    top: 0px;
+    border-left: 3px solid black;
+    border-right: 2px solid black;
+
+    display: none;
+}
+#importMenu > div {
+    height: 40px;
+    width: 100%;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+    user-select: none;
+}
+#importMenu > #red {
+    background: #e69a9a;
+    border-bottom: 1px solid black;
+}
+#importMenu > #red:hover {
+    background: #914747;
+    transition: background 700ms linear;
+}
+#importMenu > #green {
+    background: #d6f0c1;
+}
+#importMenu > #green:hover {
+    background: #9ebd85;
+    transition: background 700ms linear;
+}
+#importMenu > #purple {
+    background: #c8abda;
+}
+#importMenu > #purple:hover {
+    background: #8c6f9e;
+    transition: background 700ms linear;
+}
+
+#switch {
+    width: 150px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    direction:rtl; 
+
+    height: calc(100% - 50px);
+    background: lightgray;
+    position: absolute;
+    right: 150px;
+    top: 0px;
+    border-left: 3px solid black;
+    border-right: 2px solid black;
+}
+#switch > div {
+    height: 60px;
+    width: 100%;
+}
+#switchButton {
+    height: 40px;
+    width: 100%;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+    user-select: none;
+}
+#switch > div > .buttonGold {
+    background: #ffd700;
+}
+#switch > div >  .button:hover {
+    background: #dadada;
+    transition: background 200ms linear;
+}
+#switch > div > .button {
+    background: #efefef;
+}
+
+#labels > #body > div {
+    height: 40px;
+    width: 100%;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+    user-select: none;
+}
+#labels > #body > .buttonGold {
+    background: #ffd700;
+}
+#labels > #body > .button:hover {
+    background: #dadada;
+    transition: background 200ms linear;
+}
+#labels > #body > .button {
+    background: #efefef;
+}
+#control {
+    width: 150px;
+    height: 100%;
+    background: lightgray;
+    position: absolute;
+    left: 150px;
+    border-right: 3px solid black;
+}
+#controlSettings {
+    display: none;
+}
+.controlInput {
+    width: 50px;
+}
+
+#layerOptionLast {
+    width: 120px;
+    margin: auto;
+}
+#layerOptionLast > button {
+    width: 120px;
+    margin-top: 2px;
+    cursor: pointer;
+    user-select: none;
+}
+#topCentered {
+    width: 120px;
+    margin: auto;
+}
+#topCentered > button {
+    width: 120px;
+    margin-top: 2px;
+    cursor: pointer;
+    user-select: none;
+}
+.arrowButtons {
+    display: inline-block;
+
+    width: 40px;
+    height: 47px;
+    margin: 6px;
+
+    background: #efefef;
+
+    line-height: 47px;
+    text-align: center;
+    user-select: none;
+
+    cursor: pointer;
+}
+.arrowButtons:hover {
+    background: #e2e2e2;
+}
+#showOnLayer {
+    width: 110px;
+    margin: auto;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgb(139, 139, 139); 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(129, 129, 129); 
+}
+
+#layers {
+    width: 150px;
+    height: calc(100% - 50px);
+    background: lightgray;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    border-right: 2px solid black;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+
+.nlayer {
+    height: '30px';
+    width: 100%;
+    height: 40px;
+    cursor: pointer;
+    text-align: center;
+    line-height: 40px;
+    user-select: none;
+}
+#ngold {
+    background: gold;
+}
+#ntext {
+    background: #bcd6a7;
+}
+#ntext:hover {
+    background: #9ebd85;
+    transition: background 700ms linear;
+}
+#nimage {
+    background: #ae92c0;
+}
+#nimage:hover {
+    background: #8c6f9e;
+    transition: background 700ms linear;
+}
+
+
+#layers > #bottom {
+    height: 20px;
+    background: lightgray;
+    width: 100%;
+    border-top: 2px solid black;
+    position: absolute;
+    bottom: 0px;
+}
+#layers > #bottom > div {
+    width: 20px;
+    height: 20px;
+    border: 1px solid black;
+    cursor: pointer;
+    float: right;
+    bottom: 0px;
+    user-select: none;
+    text-align: center;
+}
+#lay {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+#final {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    display: none;
+}
+#layoutBB {
+    display: none;
+}
+#layoutSettings {
+    display: none;
+    position: absolute;
+    width: 500px;
+    height: 170px;
+    background: lightgray;
+    border: 2px solid #333;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 5px;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+#layoutSettingsTopRow {
+    height: 48px;
+    width: 100%;
+    background: rgb(163, 163, 163);
+    position: absolute;
+    top: 0px;
+}
+#layoutSettingsBody {
+    position: absolute;
+    top: 60px;
+}
+#bottomRowSettings {
+    float: left;
+}
+#goDown {
+    position: absolute;
+    bottom: 60px;
+    left: 3px;
+}
+#closeLayout {
+    font-weight: bold;
+    font-size: 30px;
+    background: rgb(255, 0, 0);
+    border-left: 2px solid black;
+    border-bottom: 2px solid black;
+    position: absolute;
+    cursor: pointer;
+    user-select: none;
+    width: 43px;
+    text-align: center;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    top: 0px;
+    right: 0px;
+}
+#closeLayout:hover {
+    background: rgb(194, 58, 58)
+}
+#createCanvas {
+    cursor: pointer;
+    user-select: none;
+    background: rgb(146, 186, 219);
+    border: 2px solid #333;
+    border-radius: 2px; 
+    display: inline-block;
+    position: absolute;
+    left: 10px;
+    width: 480px;
+    text-align: center;
+}
+#createCanvas:hover {
+    background: rgb(116, 150, 179);
+}
+.switchNumber {
+    float: left;
+}
+#bottomBar {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+
+    width: 100%;
+    height: 50px;
+
+    background: lightgrey;
+    border-top: 3px solid black;
+}
+#layoutBB > button {
+    position: absolute;
+    right: 0;
+    left: 0;
+    margin:auto;
+    bottom: 2.5px;
+    z-index: 20;
+    height: 45px;
+    width: 200px;
+}
+
+#bottomBarLeft {
+    float: left;
+    margin-left: 20px;
+
+    user-select: none;
+    
+    height: 50px;
+    line-height: 50px;
+    font-size: 25px;
+    font-style: italic;
+}
+#bottomBarLeft > div {
+    display: inline-block;
+}
+
+#canvasWH {
+    float: right;
+}
+
+#askLayoutButton {
+    position: absolute;
+    right: 0;
+    left: 0;
+    margin:auto;
+    bottom: 2.5px;
+    z-index: 20;
+    height: 45px;
+    width: 200px;
+}
+
+#allImages {
+    display: none;
+}
+
+
+
+#sheetMenu {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    display: none;
+
+    width: 500px;
+    height: 700px;
+    background: #d3d3d3;
+    border: 3px solid black;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+#sheetMenu > #footer2 {
+    height: 30px;
+    width: 100%;
+    position: absolute;
+    bottom: 50px;
+    background: #cacaca;
+    display: none;
+}
+
+#sheetMenu > #footer {
+    height: 50px;
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+    background: #c5c5c5;
+}
+#sheetMenu > #footer > #button {
+    height: 30px;
+    padding: 5px;
+    text-align: center;
+    line-height: 30px;
+    background: #94c1d1;
+    display: inline-block;
+    user-select: none;
+    cursor: pointer;
+    transition: background 1000ms linear;
+
+    margin-left: 20px;
+    margin-top: 5px;
+}
+#sheetMenu > #footer > #button:hover {
+    background: #49a0af;
+    transition: background 1000ms linear;
+}
+#sheetMenu > #header {
+    height: 50px;
+    width: 100%;
+    background: #b4b4b4;
+}
+#sheetMenu > #header > #head {
+    font-size: 30px;
+    display: inline-block;
+    line-height: 50px;
+    margin-left: 30px;
+    user-select: none;
+}
+#sheetMenu > #header > #close:hover {
+    background:rgb(179, 41, 41);
+    transition: background 1000ms linear;
+}
+#sheetMenu > #header > #close {
+    float: right;
+    height: 100%;
+    width: 50px;
+    background:rgb(194, 58, 58);
+    transition: background 1000ms linear;
+    display: inline-end;
+
+    font-size: 30px;
+    line-height: 50px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    user-select: none;
+    
+    cursor: pointer;
+}
+#sheetMenu > #body > #sheet {
+    width: 100%;
+    height: 30px;
+    max-height: 30px;
+    white-space: nowrap;
+    cursor: pointer;
+}
+#sheetMenu > #body > #sheet > #con {
+    overflow: hidden;
+    white-space: nowrap;
+}
+.sheet {
+    background: #b4d1d6;
+}
+.sheet:hover {
+    background: #98b1b6;
+}
+.sheetGold {
+    background: gold;
+}
+#sheetMenu > #body > #sheet > #text {
+    margin-left: 10px;
+    font-size: 25px;
+    line-height: 30px;
+    display: inline-block;
+    max-width: 250px;
+    user-select: none;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sheetoption {
+    display: inline-start;
+    float: left;
+    font-size: 25px;
+    line-height: 30px;
+    height: 100%;
+    padding-right: 10px;
+    padding-left: 10px;
+    cursor: pointer;
+    user-select: none;
+
+    white-space: nowrap;
+    overflow: hidden;
+    
+}
+#sheetMenu > #footer2 >  #delete {
+    background: rgb(221, 51, 51);
+}
+#sheetMenu > #footer2 > #delete:hover {
+    background: rgb(190, 45, 45);
+}
+#sheetMenu > #footer2 > #rename {
+    background: rgb(51, 221, 136);
+}
+#sheetMenu > #footer2 > #rename:hover {
+    background: rgb(45, 190, 130);
+}
+#sheetMenu > #footer2 > #move {
+    background: rgb(221, 142, 51);
+}
+#sheetMenu > #footer2 > #move:hover {
+    background: rgb(190, 127, 45);
+}
+#sheetMenu > #body > #sheet > #load {
+    background: rgb(167, 51, 221);
+}
+#sheetMenu > #body > #sheet > #load:hover {
+    background: rgb(143, 43, 189);
+}
+
+#imports {
+
+}
+#imports > div {
+    
+}

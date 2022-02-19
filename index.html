@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Designer</title>
+    <link rel="icon" type="image/x-icon" href="C:\Users\isakt\OneDrive\Desktop\Card Editor\victory.ico">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <canvas id='card'></canvas>
+    <div id='labels'>
+        <div onclick='importSheet()' id="head">
+            Import Sheet
+        </div>
+        <div id="body"></div>
+    </div>
+    <div id='switch'>
+        <div id="imports"></div>
+    </div>
+    <div id="importMenu">
+        <div id="red" onclick="closeImportMenu()">Close</div>
+        <div id='purple' onclick='importImage()'>Import Image</div>
+        <div id='green' onclick='importText()'>Import Text</div>
+    </div>
+    <div id='control'>
+        <div id="topCentered">
+            <button class='bottomButton' onclick='save()'>Download Layers</button>
+            <button class='bottomButton' onclick='paste()'>Import Layers</button>
+        </div>
+        <table id="tableCanvas">
+            <tr>
+                <td>Canvas Scale:</td>
+                <td><input style='width: 50px;' id='canvas_scale' value='100'></td>
+            </tr>
+            <tr>
+                <td>Canvas Width:</td>
+                <td><input style='width: 50px;' id='canvas_width' value='1275'></td>
+            </tr>
+            <tr>
+                <td>Canvas Height:</td>
+                <td><input style='width: 50px;' id='canvas_height' value='655'></td>
+            </tr>
+        </table>
+        <div id='controlSettings'>
+            <table id='tableAll'>
+                <tr>
+                    <td>Scale</td>
+                    <td><input class='controlInput' value='100' id='s_scale'></td>
+                </tr>
+                <tr>
+                    <td>X</td>
+                    <td><input class='controlInput' value='0' id='s_x'></td>
+                </tr>
+                <tr>
+                    <td>Y</td>
+                    <td><input class='controlInput' value='0' id='s_y'></td>
+                </tr>
+            </table>
+            <table id='tableImage'>
+
+            </table>
+            <table id='tableText'>
+                <tr>
+                    <td>Font-Size</td>
+                    <td><input class='controlInput' value='20' id='s_fonts'></td>
+                </tr>
+                <tr>
+                    <td>Font-Color</td>
+                    <td><input type='color' class='controlInput' value='#000000' id='s_fontc'></td>
+                </tr>
+                <tr>
+                    <td>Font-Family</td>
+                    <td><input class='controlInput' value='Arial' id='s_fontf'></td>
+                </tr>
+                <tr>
+                    <td>Word Wrap</td>
+                    <td><input class='controlInput' value='false' id='s_fontww'></td>
+                </tr>
+                <tr>
+                    <td>Line-Height</td>
+                    <td><input class='controlInput' value='20' id='s_fontlh'></td>
+                </tr>
+                <tr>
+                    <td>Italic</td>
+                    <td><input class='controlInput'  value='false' type='checkbox' id='s_fonti'></td>
+                </tr>
+                <tr>
+                    <td>Bold</td>
+                    <td><input class='controlInput'  value='false' type='checkbox' id='s_fontb'></td>
+                </tr>
+                <tr>
+                    <td>Center Text</td>
+                    <td><input class='controlInput'  value='false' type='checkbox' id='s_fontta'></td>
+                </tr>
+            </table>
+            <div id="layerOptionLast">
+                <button onclick='copyFormat()'>Copy Format</button>
+                <button onclick='pasteFormat()'>Paste Format</button>
+                <button onclick='deleteLayer()'>Delete</button>
+                <div id="showOnLayer">
+                    <div class='arrowButtons' onclick='moveLayer("up")'>↓</div>
+                    <div class='arrowButtons' onclick='moveLayer("down")'>↑</div>
+                </div>
+            </div>
+            
+            <div id='goDown'>
+                <button onclick="clearSetFormat(true)">Clear Formats</button>
+                <button onclick="clearSetFormat()">Clear Format</button>
+                <div class='bottomRowSettings'>
+                    <input id='bottomRowSettings' type='checkbox' onclick="switchCustomNumber(1)"><div id='bottomRowSettings' >1</div>
+                    <input id='bottomRowSettings' type='checkbox' onclick="switchCustomNumber(2)"><div id='bottomRowSettings' >2</div>
+                    <input id='bottomRowSettings' type='checkbox' onclick="switchCustomNumber(3)"><div id='bottomRowSettings' >3</div>
+                    <input id='bottomRowSettings' type='checkbox' onclick="switchCustomNumber(4)"><div id='bottomRowSettings' >4</div>
+                    <input id='bottomRowSettings' type='checkbox' onclick="switchCustomNumber(5)"><div id='bottomRowSettings' >5</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id='layers'>
+        <div id='lay'></div>
+    </div>
+
+    <canvas id='final'></canvas>
+
+    <div id='bottomBar'>
+        <div id='normalBB'>
+            <div id="bottomBarLeft">
+                <div id="sheetName">Untitled</div>
+            </div>
+            <button id='askLayoutButton' onclick='askLayout()'>Layout</button>
+            <table id='canvasWH'>
+                <tr>
+                    <td><button id='importButton' onclick='openSheetsMenu()'>Sheets</button></td>
+                    <td><button id='importButton' onclick='saveCurrentSheet()'>Save Sheet</button></td>
+                </tr>
+                <tr>
+                    <td><button id='importButton' onclick="newSheet()">New Sheet</button></td>
+                    <td><button id='importButton' onclick='saveCurrentSheet(true)'>Save Sheet As</button></td>
+                </tr>
+            </table>
+        </div>
+        <div id='layoutBB'>
+            <button onclick='closeLayout()'>Close</button>
+            <div id='leave_percent'>Not Done</div>
+        </div>
+    </div>
+    
+    <div id="sheetMenu">
+        <div id='header'>
+            <div id="head">Saved Sheets</div>
+            <div id="close" onclick='closeSheetMenu()'>X</div>
+        </div>
+        <div id="body"></div>
+        <div id="footer2">
+            <div class='sheetoption' onclick='smDelete()' id="delete">Delete</div>
+            <div class='sheetoption' onclick='smRename()' id="rename">Rename</div>
+            <div class='sheetoption' onclick='smMove(-1)' id="move">↑</div>
+            <div class='sheetoption' onclick='smMove(1)' id="move">↓</div>
+        </div>
+        <div id="footer">
+            <div id="button" onclick="hardsave()">Hard Save</div>
+            <div id="button" onclick="hardload()">Hard Load</div>
+            <div id="button" onclick="harddown()">Download</div>
+        </div>
+    </div>
+    
+    <div id='layoutSettings'>
+        <div id='layoutSettingsTopRow'>
+            <center><h2>Layout Settings</h2></center>
+        </div>
+        <div onclick='CloseLayoutSettings()' id='closeLayout'>X</div>
+        <div id='layoutSettingsBody'>
+            <table>
+                <tr>
+                    <td>Pull From</td>
+                    <td><select id='canvasFinalCards'></select></td>
+                </tr>
+                <tr>
+                    <td>How Many Images Across?</td>
+                    <td><input id='canvasWidthFinal' onkeypress="this.style.width = ((this.value.length + 1) * 8) + 'px';" style='min-width: 20px; width: 20px; max-width: 100px' placeholder='10' ></td>
+                </tr>
+            </table>
+            <h2 onclick='importLayout()' id='createCanvas'>Create Canvas</h2>
+        </div>
+    </div>
+    
+    <div id='allImages'></div>
+
+    <script src="library_simple_v14.js"></script>
+    <script src="main.js"></script>
+    <script>
+        //Script For Simple Tasks within This HTML file
+        function CloseLayoutSettings() {
+            $('layoutSettings').hide();
+        }
+
+
+    </script>
+</body>
+</html>
